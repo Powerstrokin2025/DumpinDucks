@@ -1,31 +1,54 @@
 import BlobButton from '@/components/BlobButton'
 
-// Weathered board look for the sign. Two layers of grain over a warm
-// cedar base, plus a darker edge so it reads as a real plank.
+// Weathered cedar plank. Grain, a darker damp lower edge, and a warm
+// wash from the right so it picks up the same sunrise light as the photo.
 const plank = {
-  backgroundColor: '#c9965f',
+  backgroundColor: '#b98a5c',
   backgroundImage: [
-    'repeating-linear-gradient(178deg, rgba(90,55,30,0.18) 0px, rgba(90,55,30,0.18) 1px, transparent 1px, transparent 9px)',
-    'repeating-linear-gradient(181deg, rgba(255,240,215,0.10) 0px, rgba(255,240,215,0.10) 2px, transparent 2px, transparent 23px)',
-    'radial-gradient(ellipse 9% 5% at 92% 88%, rgba(90,55,30,0.35), transparent 70%)',
-    'linear-gradient(180deg, rgba(255,235,205,0.25), rgba(90,55,30,0.18))',
+    // sunrise light hitting the board from behind and to the right
+    'linear-gradient(255deg, rgba(255,176,140,0.38) 0%, rgba(255,176,140,0.08) 45%, transparent 70%)',
+    // fine grain
+    'repeating-linear-gradient(178deg, rgba(80,48,26,0.20) 0px, rgba(80,48,26,0.20) 1px, transparent 1px, transparent 8px)',
+    // wider grain bands
+    'repeating-linear-gradient(181deg, rgba(255,235,210,0.08) 0px, rgba(255,235,210,0.08) 2px, transparent 2px, transparent 21px)',
+    // knot
+    'radial-gradient(ellipse 8% 4% at 90% 86%, rgba(70,42,22,0.45), transparent 70%)',
+    // damp, darker bottom
+    'linear-gradient(180deg, rgba(255,230,200,0.12) 0%, transparent 40%, rgba(60,36,18,0.28) 100%)',
   ].join(', '),
   boxShadow:
-    'inset 0 0 0 3px rgba(70,42,22,0.55), inset 0 -10px 18px rgba(70,42,22,0.25), 8px 10px 0 rgba(30,20,12,0.45)',
+    'inset 0 0 0 2px rgba(60,36,18,0.55), inset 0 2px 0 rgba(255,220,190,0.35), inset 0 -8px 14px rgba(50,30,15,0.30), 0 14px 24px rgba(20,12,8,0.30)',
+  transform: 'perspective(1000px) rotateY(-9deg) rotate(1deg)',
+  transformOrigin: 'bottom center',
 }
 
-const post = {
-  backgroundColor: '#8a5a3b',
-  backgroundImage:
-    'repeating-linear-gradient(90deg, rgba(40,25,14,0.25) 0px, rgba(40,25,14,0.25) 1px, transparent 1px, transparent 6px)',
+const postStyle = {
+  backgroundColor: '#6f4a30',
+  backgroundImage: [
+    'linear-gradient(90deg, rgba(255,190,150,0.0) 0%, rgba(255,190,150,0.25) 70%, rgba(30,18,10,0.35) 100%)',
+    'repeating-linear-gradient(180deg, rgba(30,18,10,0.25) 0px, rgba(30,18,10,0.25) 1px, transparent 1px, transparent 7px)',
+  ].join(', '),
 }
 
 function Nail({ className }: { className: string }) {
   return (
     <span
       aria-hidden
-      className={`absolute h-2 w-2 rounded-full sm:h-3 sm:w-3 ${className}`}
-      style={{ background: 'radial-gradient(circle at 35% 35%, #d8d2c8, #6e675e 70%)', boxShadow: '1px 1px 0 rgba(0,0,0,0.35)' }}
+      className={`absolute h-2 w-2 rounded-full sm:h-2.5 sm:w-2.5 ${className}`}
+      style={{
+        background: 'radial-gradient(circle at 35% 35%, #c9b8a6, #5d4636 75%)',
+        boxShadow: '0.5px 1px 0 rgba(0,0,0,0.4)',
+      }}
+    />
+  )
+}
+
+function Post({ className }: { className: string }) {
+  return (
+    <span
+      aria-hidden
+      className={`absolute top-1/2 w-2.5 rounded-sm sm:w-3.5 ${className}`}
+      style={postStyle}
     />
   )
 }
@@ -41,20 +64,42 @@ export default function Hero() {
         className="absolute inset-0 h-full w-full object-cover"
         style={{ objectPosition: '70% 45%' }}
       />
-      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-dawn/80" />
+      <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-b from-transparent to-dawn/70" />
 
       {/* The sign, planted in the sand on the right */}
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pt-28 pb-12 sm:px-6 sm:pb-14">
-        <div className="relative ml-auto w-full max-w-[210px] rotate-[1.5deg] sm:max-w-sm">
-          {/* Stake going down into the sand */}
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pt-28 pb-16 sm:px-6 sm:pb-24">
+        <div className="relative ml-auto w-full max-w-[210px] sm:mr-8 sm:max-w-sm">
+          {/* Shadow the sign casts toward the camera (sun is behind it) */}
           <div
             aria-hidden
-            className="absolute -bottom-7 left-1/2 h-10 w-3 sm:-bottom-9 sm:h-14 sm:w-4 -translate-x-1/2 rounded-b-sm border-x-2 border-b-2 border-[#3d2716]"
-            style={post}
+            className="absolute -bottom-12 left-[-6%] h-10 w-[112%] rounded-[50%] sm:-bottom-16 sm:h-16"
+            style={{
+              background: 'radial-gradient(ellipse at 50% 30%, rgba(40,24,20,0.6), rgba(40,24,20,0.25) 55%, transparent 75%)',
+              filter: 'blur(6px)',
+            }}
           />
-          <div aria-hidden className="absolute -bottom-8 left-1/2 h-2 w-14 sm:-bottom-11 sm:h-3 sm:w-20 -translate-x-1/2 rounded-full bg-black/25 blur-sm" />
 
-          <div className="relative rounded-md px-4 py-4 sm:px-6 sm:py-6" style={plank}>
+          {/* Two posts behind the board, running down into the sand */}
+          <Post className="left-[18%] h-[calc(50%+2.75rem)] sm:h-[calc(50%+4rem)]" />
+          <Post className="right-[18%] h-[calc(50%+2.5rem)] sm:h-[calc(50%+3.75rem)]" />
+
+          {/* Wet sand and foam piled around the base of the posts */}
+          <div
+            aria-hidden
+            className="absolute -bottom-12 left-[8%] h-7 w-[84%] sm:-bottom-[4.25rem] sm:h-10"
+            style={{
+              background: [
+                'radial-gradient(ellipse 22% 60% at 20% 55%, rgba(236,224,220,0.95), rgba(236,224,220,0) 70%)',
+                'radial-gradient(ellipse 20% 55% at 80% 55%, rgba(236,224,220,0.95), rgba(236,224,220,0) 70%)',
+                'radial-gradient(ellipse 50% 45% at 50% 70%, rgba(150,120,112,0.55), rgba(150,120,112,0) 75%)',
+                'radial-gradient(ellipse 14% 40% at 35% 40%, rgba(255,240,236,0.8), rgba(255,240,236,0) 70%)',
+                'radial-gradient(ellipse 14% 40% at 66% 45%, rgba(255,240,236,0.75), rgba(255,240,236,0) 70%)',
+              ].join(', '),
+              filter: 'blur(1.5px)',
+            }}
+          />
+
+          <div className="relative rounded-[3px] px-4 py-4 sm:px-6 sm:py-6" style={plank}>
             <Nail className="top-2 left-2 sm:top-3 sm:left-3" />
             <Nail className="top-2 right-2 sm:top-3 sm:right-3" />
             <Nail className="bottom-2 left-2 sm:bottom-3 sm:left-3" />
