@@ -43,40 +43,40 @@ export default function Hero() {
       />
       <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-dawn/80" />
 
-      {/* The sign, planted in the sand on the left so the sky stays open */}
+      {/* The sign, planted in the sand on the right */}
       <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pt-28 pb-12 sm:px-6 sm:pb-14">
-        <div className="relative w-full max-w-lg -rotate-[1.5deg]">
+        <div className="relative ml-auto w-full max-w-[300px] rotate-[1.5deg] sm:max-w-sm">
           {/* Stake going down into the sand */}
           <div
             aria-hidden
-            className="absolute -bottom-10 left-1/2 h-16 w-5 -translate-x-1/2 rounded-b-sm border-x-2 border-b-2 border-[#3d2716]"
+            className="absolute -bottom-9 left-1/2 h-14 w-4 -translate-x-1/2 rounded-b-sm border-x-2 border-b-2 border-[#3d2716]"
             style={post}
           />
-          <div aria-hidden className="absolute -bottom-12 left-1/2 h-3 w-24 -translate-x-1/2 rounded-full bg-black/25 blur-sm" />
+          <div aria-hidden className="absolute -bottom-11 left-1/2 h-3 w-20 -translate-x-1/2 rounded-full bg-black/25 blur-sm" />
 
-          <div className="relative rounded-md px-5 py-6 sm:px-8 sm:py-8" style={plank}>
+          <div className="relative rounded-md px-5 py-5 sm:px-6 sm:py-6" style={plank}>
             <Nail className="top-3 left-3" />
             <Nail className="top-3 right-3" />
             <Nail className="bottom-3 left-3" />
             <Nail className="right-3 bottom-3" />
 
-            <p className="font-western text-base text-[#4a2e1a] sm:text-lg">Texas Duck Conservation Crew</p>
+            <p className="font-western text-sm text-[#4a2e1a] sm:text-base">Texas Duck Conservation Crew</p>
 
-            <h1 className="mt-1 font-display text-[2rem] leading-[0.95] text-[#2d1d12] uppercase sm:text-5xl">
+            <h1 className="mt-1 font-display text-[1.6rem] leading-[0.95] text-[#2d1d12] uppercase sm:text-[2.1rem]">
               Don't dump <span className="text-dusk">'em in</span> parks.
             </h1>
 
-            <p className="mt-3 text-[15px] font-bold text-[#3a2616] sm:mt-4 sm:text-[17px]">
+            <p className="mt-3 text-[13px] leading-snug font-bold text-[#3a2616] sm:text-sm">
               Every spring, thousands of pet ducks get left at park ponds in Texas. They can't fly
               and they can't feed themselves, so most of them don't make it. We're a crew of
               hunters and duck people trying to stop that.
             </p>
 
-            <div className="mt-5 flex flex-wrap items-center gap-3 sm:mt-6">
-              <BlobButton href="/report" color="dusk">
+            <div className="mt-4 flex flex-wrap items-center gap-2">
+              <BlobButton href="/report" color="dusk" className="px-4 py-2 text-xs">
                 Report a Dumped Duck
               </BlobButton>
-              <BlobButton href="/about" color="cream">
+              <BlobButton href="/about" color="cream" className="px-4 py-2 text-xs">
                 Why We Do This
               </BlobButton>
             </div>
